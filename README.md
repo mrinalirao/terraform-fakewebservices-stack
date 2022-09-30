@@ -136,7 +136,7 @@ variable "server_count" {
 // Main
 module "stack" {
   source         = "aqitio/stack/fakewebservices"
-  version        = "0.0.2"
+  version        = "0.0.3"
   stack_prefix   = "ENV"
   server_count   = var.server_count
   server_type    = "t2.micro"
