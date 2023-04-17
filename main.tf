@@ -9,6 +9,13 @@ resource "fakewebservices_server" "server" {
   name = upper("SRV_${var.stack_prefix}_${count.index + 1}")
   type = var.server_type
   vpc  = fakewebservices_vpc.vpc.name
+
+  lifecycle {
+    postcondition {
+      condition     = self.type == "t2.micro"
+      error_message = "The fakewebservices_server server type is invalid"
+    }
+  }
 }
 
 resource "fakewebservices_load_balancer" "load_balancer" {
