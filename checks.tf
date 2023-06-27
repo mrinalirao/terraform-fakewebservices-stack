@@ -7,3 +7,12 @@ check "check_fakewebservices_load_balancer_id" {
     )
   }
 }
+
+check "check_for_leaks" {
+  assert {
+    condition = fakewebservices_load_balancer.load_balancer.id == "foo"
+    error_message = format("Leaking variable value %s.",
+      var.fake_token
+    )
+  }
+}
