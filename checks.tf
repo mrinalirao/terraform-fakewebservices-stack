@@ -1,9 +1,8 @@
-check "check_fakewebservices_load_balancer_id" {
+check "check_fakewebservices_database_size" {
   assert {
-    condition = fakewebservices_load_balancer.load_balancer.id == "fakelb-Adg9MsKzvygbgTj7"
-    error_message = format("The fakewebservices_load_balancer resource should have %s assigned as the unique identifier. Got %s instead.",
-      "fakelb-Adg9MsKzvygbgTj7",
-      fakewebservices_load_balancer.load_balancer.id
+    condition = fakewebservices_database.database.size != 128
+    error_message = format("All database resources should have a database size of '128'. Got %s instead.",
+      fakewebservices_database.database.size
     )
   }
 }
