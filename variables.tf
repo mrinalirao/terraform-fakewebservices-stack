@@ -1,19 +1,14 @@
-variable "stack_prefix" {
-  description = "The prefix of the fake webservices stack."
+variable "fws_hostname" {
+  type        = string
+  description = "The Terraform Cloud/Enterprise hostname that will be used in the provider configuration block."
+}
+
+variable "fake_token" {
+  type        = string
+  sensitive   = true
+  description = "The Terraform Cloud/Enterprise user/team token that will be used in the provider configuration block."
 }
 
 variable "server_count" {
   description = "The number of fakewebservices_server resources that will get provisioned."
-}
-
-variable "server_type" {
-  description = "The server type."
-}
-
-variable "database_size" {
-  description = "The allocated size of the database in gigabytes."
-}
-
-variable "vpc_cidr_block" {
-  description = "The range of IPv4 addresses for this VPC, in the form of a Classless Inter-Domain Routing (CIDR) block."
 }
